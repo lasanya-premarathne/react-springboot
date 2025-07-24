@@ -3,6 +3,7 @@ import { Typography, TextField, Button, Grid, Container } from '@mui/material';
 import { Configurations } from '../models/configurations.model';
 import ConfigurationValidation from '../validations/ConfingurationValidation';
 import { useNavigate } from 'react-router-dom';
+import { addSysConfig } from '../services/sysCon.service';
 
 const SystemConfigurations: FC = () => {
 	const navigate = useNavigate();
@@ -31,7 +32,7 @@ const SystemConfigurations: FC = () => {
 		});
 	};
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async(e: React.FormEvent) => {
 		// Prevents the page from reloading on form submit
 		e.preventDefault();
 
@@ -41,11 +42,14 @@ const SystemConfigurations: FC = () => {
 			setErrors,
 		});
 
-		if (isValid) {
+        if (isValid) {
+            await addSysConfig(formData);
 			// Redirect to ticket-actions route
 			navigate('/ticket-actions');
-			console.log('Form submitted:', formData);
-		}
+        } else {
+            // it will anyways be showing the errors
+            alert("Check form errors")
+        }
 	};
 
 	return (

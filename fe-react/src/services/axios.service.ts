@@ -4,7 +4,7 @@ import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 
 const axiosInstance = axios.create({
   baseURL: process.env.REACT_APP_BACKEND_BASE_URL || "http://localhost:8080",
-  timeout: 15000,
+  timeout: 18000,
   headers: {
     "Content-Type": "application/json",
   },

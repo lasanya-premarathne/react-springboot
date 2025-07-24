@@ -1,5 +1,4 @@
-import { ConfigurationValidationProps } from "../models/configurationValidationProps.model";
-import { ConfigurationError } from "../models/configurationError.model";
+import { ConfigurationError, ConfigurationValidationProps } from "../models/configurations.model";
 
 const ConfigurationValidation = ({ formData, errors, setErrors }: ConfigurationValidationProps): boolean => {
     let isValid = true;
